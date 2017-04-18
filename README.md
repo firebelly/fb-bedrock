@@ -1,3 +1,20 @@
+# FB-Bedrock
+Our fork of Bedrock, with our fork of Sage.
+
+## Installation
+
+* Clone this repo
+* Run `sh install.sh` from the command line from the root of the project
+* Copy `.env.example` and fill in your own credentials
+* Run `gulp watch` from `web/app/themes/fb-sage` to work on front end
+
+## Set Up on WebFaction
+
+* Copy `.env.staging.example` and fill in the proper credentials
+* Run `cap staging deploy:wf_setup` — check server to make sure it installed correctly
+* Add the proper variables to the deployment environment files in `config/deploy`
+* Run `cap staging deploy` to deploy to staging/production server
+
 # [Bedrock](https://roots.io/bedrock/)
 [![Build Status](https://travis-ci.org/roots/bedrock.svg)](https://travis-ci.org/roots/bedrock)
 
