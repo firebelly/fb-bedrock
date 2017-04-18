@@ -23,6 +23,9 @@ sql-dump-*.sql
 vendor/*
 !vendor/.gitkeep
 
+# Them dist folder
+web/app/themes/*/dist
+
 # Node Package Manager
 node_modules
 
