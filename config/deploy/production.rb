@@ -2,7 +2,6 @@ set :stage, :production
 set :login, 'firebelly'
 set :application, 'fb-bedrock'
 
-
 # Simple Role Syntax
 # ==================
 #role :app, %w{deploy@example.com}
