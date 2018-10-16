@@ -3,7 +3,7 @@ set :domain, 'fb-bedrock.firebelly.co'
 set :theme, 'fb-sage'
 set :login, 'firebelly'
 set :repo_url, 'git@github.com:firebelly/fb-bedrock.git'
-set :php, 'php70'
+set :php, 'php72'
 
 # Hardcodes branch to always be master
 # This could be overridden in a stage config file

@@ -5,14 +5,14 @@ Our fork of Bedrock, with our fork of Sage.
 
 * Clone this repo using `git clone --recurse-submodules git@github.com:firebelly/fb-bedrock.git` (to also pull in fb-sage)
 * Run `sh install.sh` from the command line from the root of the project
-* Copy `.env.example` and fill in your own credentials
+* Update `.env` with your local credentials
 * Run `gulp watch` from `web/app/themes/fb-sage` to work on front end
 
 ## Set Up on WebFaction
 
-* Copy `.env.staging.example` to `.env` and fill in the proper credentials
+* Update `.env.staging` with your staging credentials
+* Update variables in `config/deploy.rb` and `config/deploy/staging.rb`
 * Run `cap staging deploy:wf_setup` — check server to make sure it installed correctly
-* Add the proper variables to the deployment environment files in `config/deploy`
 * Run `cap staging deploy` to deploy to staging server
 
 --
