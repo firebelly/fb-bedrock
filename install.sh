@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# make sure fb-sage is up-to-date
+git submodule foreach git pull origin master
+
 composer install
 gem install bundler
 bundle install
@@ -10,4 +13,20 @@ cd web/app/themes/fb-sage
 npm install bower
 npm install
 bower install
-gulp
+npx gulp
+
+# theme name sent along with command?
+if [ $# -eq 1 ]
+  then
+  	cd ../../../../
+    echo "Renaming fb-sage to $1..."
+    mv web/app/themes/fb-sage web/app/themes/$1
+    echo "Updating .env with $1.localhost, $1_dev, etc..."
+    sed -i "" "s/example.com/$1.localhost/g" .env
+    sed -i "" "s/database_name/$1_dev/g" .env
+    echo "Updating deploy.rb with theme, domain, etc..."
+    sed -i "" "s/fb-sage/$1/g" config/deploy.rb
+    sed -i "" "s/fb-bedrock/$1/g" config/deploy.rb
+    echo "Updating manifest.json with $1.localhost..."
+    sed -i "" "s/fb-sage/$1/g" web/app/themes/$1/assets/manifest.json
+fi
