@@ -19,14 +19,27 @@ npx gulp
 if [ $# -eq 1 ]
   then
   	cd ../../../../
+
     echo "Renaming fb-sage to $1..."
     mv web/app/themes/fb-sage web/app/themes/$1
+
     echo "Updating .env with $1.localhost, $1_dev, etc..."
     sed -i "" "s/example.com/$1.localhost/g" .env
+    sed -i "" "s/fb-sage.localhost/$1.localhost/g" .env
     sed -i "" "s/database_name/$1_dev/g" .env
+
     echo "Updating deploy.rb with theme, domain, etc..."
     sed -i "" "s/fb-sage/$1/g" config/deploy.rb
     sed -i "" "s/fb-bedrock/$1/g" config/deploy.rb
+
     echo "Updating manifest.json with $1.localhost..."
     sed -i "" "s/fb-sage/$1/g" web/app/themes/$1/assets/manifest.json
+
+    read -p "Create $1_dev database? (y/n) :" -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        echo "Running: mysql -u root -p -e \"create database $1_dev\""
+        mysql -u root -p -e "create database $1_dev";
+    fi
 fi
