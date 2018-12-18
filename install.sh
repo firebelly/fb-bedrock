@@ -3,7 +3,7 @@
 # make sure fb-sage is up-to-date
 git submodule foreach git pull origin master
 
-composer install
+composer update
 gem install bundler
 bundle install
 cp .env.example .env
