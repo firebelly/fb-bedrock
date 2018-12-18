@@ -18,7 +18,7 @@ npx gulp
 # theme name sent along with command?
 if [ $# -eq 1 ]
   then
-  	cd ../../../../
+    cd ../../../../
 
     echo "Renaming fb-sage to $1..."
     mv web/app/themes/fb-sage web/app/themes/$1
@@ -41,5 +41,15 @@ if [ $# -eq 1 ]
     then
         echo "Running: mysql -u root -p -e \"create database $1_dev\""
         mysql -u root -p -e "create database $1_dev";
+    fi
+
+    read -p "Clear out .git dirs and start new repo? (y/n) :" -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        echo "Removing .git dirs..."
+        rm -rf .git web/app/themes/$1/.git
+        git init && git add . && git commit -am "Initial repo"
+        echo "Now create $1 repo on GitHub and run: git remote add origin git@github.com:firebelly/$1.git && git push -u origin master"
     fi
 fi
