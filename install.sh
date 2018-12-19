@@ -31,6 +31,7 @@ if [ $# -eq 1 ]
     echo "Updating deploy.rb with theme, domain, etc..."
     sed -i "" "s/fb-sage/$1/g" config/deploy.rb
     sed -i "" "s/fb-bedrock/$1/g" config/deploy.rb
+    sed -i "" "s/fb-bedrock/$1/g" config/deploy/staging.rb
 
     echo "Updating manifest.json with $1.localhost..."
     sed -i "" "s/fb-sage/$1/g" web/app/themes/$1/assets/manifest.json
