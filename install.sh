@@ -85,8 +85,8 @@ else
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-      echo "Running: mysql -u root -p -e \"create database ${theme}_dev2\""
-      mysql -u root -p -e "create database ${theme}_dev2";
+      echo "Running: mysql -u root -p -e \"create database ${theme}_dev\""
+      mysql -u root -p -e "create database ${theme}_dev";
   fi
 
 fi
