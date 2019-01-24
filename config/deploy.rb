@@ -59,16 +59,11 @@ set :local_theme_path, fetch(:local_app_path).join(fetch(:theme_path))
 # WebFaction-specific deploy methods, deploy:wf_setup and deploy:wf_delete
 require "#{fetch(:local_abs_path)}/config/webfaction.rb"
 
+# Compile and upload versioned assets
 namespace :deploy do
   task :compile_assets do
     run_locally do
       execute "cd #{fetch(:local_theme_path)} && npx gulp --production"
-    end
-  end
-
-  task :ungulp do
-    run_locally do
-      execute "cd #{fetch(:local_theme_path)} && npx gulp --development"
     end
   end
 
@@ -80,8 +75,6 @@ namespace :deploy do
       on roles(:web) do
         upload! fetch(:local_theme_path).join('dist').to_s, release_path.join(fetch(:theme_path)), recursive: true
       end
-
-      invoke 'deploy:ungulp'
     else
       # just copy dist dir
       on roles(:app) do
