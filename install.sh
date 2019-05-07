@@ -71,8 +71,15 @@ else
   # This is an install for a fresh pull from a repo of a site already in progress
   echo "\n\nRunning install for freshly pulled repo of a site in progress..."
 
-  # Pull theme name (assuming only a single theme!)
+  # Pull theme name
   theme=`ls web/app/themes/`
+  # Check if multiple dirs in themes (womanlab I'm looking at you)
+  if [ $(echo "$theme" | wc -l) -gt 1 ];
+  then
+    echo "Multiple dirs in themes found:"
+    echo $theme
+    read -p "Enter theme name: " theme
+  fi
 
   printf "Updating .env with %s.localhost, %s_dev, etc...\n" $theme $theme
   sed -i "" "s/example.com/${theme}.localhost/g" .env.example
