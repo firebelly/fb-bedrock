@@ -82,11 +82,11 @@ else
   fi
 
   printf "Updating .env with %s.localhost, %s_dev, etc...\n" $theme $theme
-  sed -i "" "s/example.com/${theme}.localhost/g" .env.example
-  sed -i "" "s/fb-sage.localhost/${theme}.localhost/g" .env.example
-  sed -i "" "s/database_name/${theme}_dev/g" .env.example
-  sed -i "" "s/database_user/root/g" .env.example
-  sed -i "" "s/database_password//g" .env.example
+  sed -i "" "s/example.com/${theme}.localhost/g" .env
+  sed -i "" "s/fb-sage.localhost/${theme}.localhost/g" .env
+  sed -i "" "s/database_name/${theme}_dev/g" .env
+  sed -i "" "s/database_user/root/g" .env
+  sed -i "" "s/database_password//g" .env
 
   read -p "Create ${theme}_dev database? (y/n) :" -n 1 -r
   echo
