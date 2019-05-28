@@ -1,6 +1,7 @@
 set :stage, :staging
 set :login, 'firebelly'
-set :domain, 'fb-bedrock.firebelly.co'
+set :domain, 'staging.fb-bedrock.com'
+set :wpcli_remote_url, fetch(:domain)
 
 # Simple Role Syntax
 # ==================

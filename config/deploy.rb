@@ -5,6 +5,10 @@ set :login, 'firebelly'
 set :repo_url, 'git@github.com:firebelly/fb-bedrock.git'
 set :php, 'php72'
 
+# For wpcli db command search-replace
+set :wpcli_remote_url, fetch(:domain)
+set :wpcli_local_url, "http://#{fetch(:theme)}.localhost"
+
 # Hardcodes branch to always be master
 # This could be overridden in a stage config file
 set :branch, :master
